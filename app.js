@@ -19,6 +19,15 @@ document.getElementById("digit-btn").addEventListener('click', function (event) 
     if (isNaN(digit)) {
         // handle backspace
         // handle clear
+        if (digit === 'C') {
+            const typedDigit = document.getElementById("display");
+        typedDigit.value = "";
+        }
+        if (digit === 'Back') {
+            const typedDigit = document.getElementById("display");
+            typedDigit.value = typedDigit.value.substr(0, typedDigit.value.length - 1);
+        }
+        
     }
     else {
         const typedDigit = document.getElementById("display");
@@ -30,13 +39,12 @@ document.getElementById("submit").addEventListener('click', function () {
     const pinDisplay = document.getElementById("pin-input");
     const typedDisplay = document.getElementById("display");
     if (pinDisplay.value === typedDisplay.value) {
-        document.getElementById("matched").style.display = 'block';
-        document.getElementById("matched").addEventListener('click', function () {
-            document.getElementById("main").style.display = 'none';
-            document.getElementById("bunker").style.display = 'block';
+        document.getElementById("correct").style.display = 'block';
+        document.getElementById("correct").addEventListener('click', function () {
+            document.body.style.backgroundColor = 'green';
         })
     }
     else {
-        document.getElementById("unmatched").style.display = 'block';
+        document.getElementById("incorrect").style.display = 'block';
     }
 })
